@@ -1,29 +1,38 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 
 const ProtectorRouter = ({ children }) => {
-   const [userLogin, setUserLogin] = useState(false)
+  const [loading, setLoading] = useState(true);
+  const [dataLocal, setDataLocal] = useState({});
 
-   useEffect(() => {
-       if (localStorage.getItem('user')) {
-           setUserLogin(true)
-           console.log(localStorage.getItem('user'))
-       }
-   }, [])
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Simula un retraso, ya que localStorage es síncrono
+        await new Promise((resolve) => setTimeout(resolve, 1000));
 
-   setTimeout(() => {
-    console.log('se mando')
-    if (userLogin) {
-        console.log('si si')
-        return (
-            <>
-                <h1>HEko</h1>
-            </>
-        )
-    } else {
-        return <Navigate to={"/Login"}/>
-    }
-   }, 500);
+        const data = JSON.parse(localStorage.getItem("user")) || {};
+        setDataLocal(data);
+      } catch (error) {
+        console.error("Error al obtener datos locales:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return <h1>Cargando...</h1>;
+  }
+
+  if (dataLocal.token) {
+    console.log(dataLocal, 'ke')
+    return <>{children}</>;
+  }
+
+  return <Navigate to="/Login" />;
 };
 
 export default ProtectorRouter;

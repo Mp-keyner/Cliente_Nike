@@ -6,17 +6,17 @@ import {useApi}  from "../utils/useApi";
 export const userRegister = () => {
   const { loadApi, errorApi } = useApi(); //use Effect error, el cargando mandalo a la vista
   const [loadingApi, setLoadingApi] = useState(false);
-  const { email, password, onChangeInfo, form, password2, name,} = useForm({
+  const { email, password, onChangeInfo, form, password2, nombre,} = useForm({
     email: "andrescampu3@gmail.com",
     password: "1234567890",
     password2: "1234567890",
-    name: "Andres Campuzano",
+    nombre: "Andres Campuzano",
   });
  const handleRegister = async () => {
     if (email.trim() === "") {
       // Correo vacío
       alert("El campo de correo electronico está vacío",)
-    }  else if (name.trim() === "") {
+    }  else if (nombre.trim() === "") {
       alert("El campo de nombre está vacío",)
     } else if (!isValidusername(email)) {
       alert("Ingresa un correo valido",)

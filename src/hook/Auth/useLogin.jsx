@@ -2,14 +2,16 @@
 import { useState, useContext } from "react";
 import useForm from "../utils/useForm";
 import { AuthContext } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 export const userLogin = () => {
+  const navigate = useNavigate()
   const [loadingApi, setLoadingApi] = useState(false);
   const { signIn } = useContext(AuthContext);
 
   const { email, password, onChangeInfo, form } = useForm({
-    email: "",
-    password: "",
+    email: "keyerdelahozsteam@gmail.com",
+    password: "1234567890",
   });
 
 
@@ -30,7 +32,9 @@ export const userLogin = () => {
         const data = await signIn(form);
         if (data) {
           setLoadingApi(false);
+          navigate('/')
         }
+
       } catch (error) {
         console.log("error", JSON.stringify(error, null, 3));
       }
@@ -42,7 +46,6 @@ export const userLogin = () => {
     return usernamePattern.test(value);
   };
   return {
-    userLogin,
     onChangeInfo,
     loadingApi,
     handleLogin,
