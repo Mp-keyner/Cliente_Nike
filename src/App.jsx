@@ -1,0 +1,22 @@
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Login from "./Pages/Login";
+import Layout from "./components/Layout";
+import ProtectorRouter from "./components/ProtectorRouter";
+import Registro from "./Pages/Registro";
+
+const App = () => {
+  return (
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/Login" element={<Login />} />
+          <Route path="/Registro" element={<Registro />} />
+          <Route path="*" element={<Layout />} />
+        </Routes>
+      </BrowserRouter>
+    </>
+  );
+};
+
+export default App;
