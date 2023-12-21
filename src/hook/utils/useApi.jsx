@@ -1,5 +1,6 @@
 import { useState } from "react";
 import api_Shoes from "../../api/Shoes";
+import { toast } from 'react-toastify';
 
 export const useApi = () => {
   const [loadingApi, setLoading] = useState(false);
@@ -49,12 +50,12 @@ export const useApi = () => {
           break;
         // Puedes agregar más casos aquí para manejar diferentes instancias de API
       }
-      console.log(response)
+      toast.success('Inicio exitoso')
       setLoadedApi((value) => [...value, `${type}__${endpoint}`]);
       return response;
     } catch (error) {
-      console.error("Error en la carga de la API:", error.request.response);
       setError(JSON.parse(error.request.response).message);
+      toast.error(JSON.parse(error.request.response).message)
     } finally {
       setLoading(false);
     }
@@ -65,9 +66,7 @@ export const useApi = () => {
       const data = await localStorage.getItem("user");
       if (data === null) {
         return "";
-        setIsLoggedIn(false)
       }
-      console.log(JSON.parse(data));
       setIsLoggedIn(true)
       return JSON.parse(data).token;
     } catch (error) {
@@ -84,7 +83,6 @@ export const useApi = () => {
       throw new Error("Error al limpiar el almacenamiento local");
     }
   };  
-  console.log(errorApi)
   return {
     loadApi,
     loadingApi,

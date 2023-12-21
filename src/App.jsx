@@ -4,6 +4,8 @@ import Login from "./Pages/Login";
 import Layout from "./components/Layout";
 import ProtectorRouter from "./components/ProtectorRouter";
 import Registro from "./Pages/Registro";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
   return (
@@ -15,6 +17,7 @@ const App = () => {
           <Route path="*" element={<Layout />} />
         </Routes>
       </BrowserRouter>
+      <ToastContainer/>
     </>
   );
 };
