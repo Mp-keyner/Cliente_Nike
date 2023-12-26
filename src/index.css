@@ -45,16 +45,14 @@ body {
   color: white;
 }
 .Baner{
-  background-image: url('https://static.nike.com/a/images/f_auto/dpr_1.5,cs_srgb/w_1263,c_limit/d0177eb4-ba54-4526-9d1d-a4b85f76c0a9/nike-just-do-it.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
+
   height: 27pc;
   padding: 0.6pc;
   display: flex;
   align-items: flex-end;
   justify-content: center;
 }
-.Baner h2{
+.Banerh2{
   font-family:'Barlow', sans-serif;
   font-weight: 900;
   font-size: 7pc;
@@ -62,5 +60,30 @@ body {
 }
 .sectionLogin{
   height: 27pc;
-
+  display: flex;
+  align-items: center;
+}
+.sectionLoginLeft{
+  display: flex;
+  width: 50%;
+  align-items: center;
+  justify-content: center;
+}
+.sectionLoginLeft div {
+  width: 50%;
+  gap: 0.6pc;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.sectionLoginRigth{
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+input{
+  padding: 0.3pc;
+  border: rgba(70,118,161,1);
+  background-color: transparent;
 }
