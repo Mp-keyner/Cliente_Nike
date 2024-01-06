@@ -3,20 +3,25 @@ import { userLogin } from "../hook/Auth/useLogin";
 import axios from "axios";
 import { useApi } from "../hook/utils/useApi";
 import zapato from "../assets/img/zapato.png";
-import { Box, Stack, TextField } from "@mui/material";
+import { Box, IconButton, InputAdornment, OutlinedInput, Stack, TextField, Typography } from "@mui/material";
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 const Login = () => {
   const { handleLogin, onChangeInfo, email, password } = userLogin();
   const { errorApi } = useApi();
+  const [showPassword, setShowPassword] = React.useState(false);
+
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+
   return (
     <>
       <Stack component="section">
         <Stack
           component="section"
-          display="flex"
           alignItems="center"
           padding="3pc"
-          flexDirection="row"
+          direction="row"
           color="#fff"
         >
           <Box
@@ -27,10 +32,17 @@ const Login = () => {
             display="flex"
             flexDirection="column"
           >
-            <h1 className="Title">
+            <Typography
+              fontSize="5pc"
+              fontWeight={900}
+              sx={{
+                fontFamily: "Barlow",
+              }}
+              variant="h1"
+            >
               <i>Nike Air Max Alpha Trainer 5</i>
-            </h1>
-            <p>
+            </Typography>
+            <Typography>
               Dalo todo en tu última repetición con potencia y acaba con un
               rugido que resuene en todo el gimnasio con las Nike Air Max Alpha
               Trainer 5. La amortiguación Max Air ofrece una estabilidad cómoda
@@ -38,7 +50,7 @@ const Login = () => {
               plana ofrece una mayor estabilidad y agarre para todo tipo de
               entrenamientos exigentes sin sacrificar el estilo mientras cambias
               de serie o estación.
-            </p>
+            </Typography>
           </Box>
           <Box
             component="div"
@@ -50,49 +62,70 @@ const Login = () => {
             <img src={zapato} alt="zapato" className="zapato" />
           </Box>
         </Stack>
-        <Box sx={{
-            backgroundImage: "url('https://static.nike.com/a/images/f_auto/dpr_1.5,cs_srgb/w_1263,c_limit/d0177eb4-ba54-4526-9d1d-a4b85f76c0a9/nike-just-do-it.jpg')",
-            backgroundRepeat: 'no-repeat',
-            backgroundSize: 'cover',
-        }} height='27pc' padding='0.6pc' display='flex' alignItems='flex-end' justifyContent='center'>
+        <Box
+          sx={{
+            backgroundImage:
+              "url('https://static.nike.com/a/images/f_auto/dpr_1.5,cs_srgb/w_1263,c_limit/d0177eb4-ba54-4526-9d1d-a4b85f76c0a9/nike-just-do-it.jpg')",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+          }}
+          height="27pc"
+          padding="0.6pc"
+          display="flex"
+          alignItems="flex-end"
+          justifyContent="center"
+        >
           <i>
-            <h2 className="Banerh2">REGALA INSPIRACION</h2>
+            <Typography
+              variant="h2"
+              fontSize="7pc"
+              fontWeight={900}
+              color='white'
+              sx={{
+                fontFamily: "Barlow",
+              }}
+            >
+              REGALA INSPIRACION
+            </Typography>
           </i>
         </Box>
-        <Stack component="section">
-          <div className="sectionLoginLeft">
-            <div>
-              <h1
-                className="Title"
-                style={{
-                  fontSize: "2pc",
-                }}
-              >
-                <i>INICIA SESION</i>
-              </h1>
-              <input
-                type="text"
+        <Stack component="section" direction='row'>
+          <Box width='50%' flexDirection='column' display='flex'>
+          <TextField
+                colo
+                label="Outlined"
+                variant="outlined"
                 name="email"
                 onChange={({ target: { value, name } }) =>
                   onChangeInfo(value, name)
                 }
                 value={email}
               />
-              <input type="text" />
-              <TextField
-                label="Outlined"
-                variant="outlined"
-                name="password"
-                onChange={({ target: { value, name } }) =>
-                  onChangeInfo(value, name)
-                }
-                value={password}
-              />
-              <button onClick={() => handleLogin()}>Login</button>
-            </div>
-          </div>
-          <div className="sectionLoginRigth"></div>
-          </Stack>
+              <OutlinedInput
+            name="password"
+            onChange={({ target: { value, name } }) =>
+              onChangeInfo(value, name)
+            }
+            value={password}
+            type={showPassword ? 'text' : 'password'}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword}
+                  edge="end"
+                >
+                  {!showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            }
+            label="Password"
+          />
+          </Box>
+          <Box>
+            j
+          </Box>
+        </Stack>
       </Stack>
     </>
   );
