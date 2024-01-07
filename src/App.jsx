@@ -4,20 +4,24 @@ import Login from "./Pages/Login";
 import Layout from "./components/Layout";
 import ProtectorRouter from "./components/ProtectorRouter";
 import Registro from "./Pages/Registro";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import theme from "./theme";
+import { ThemeProvider } from "@emotion/react";
 
 const App = () => {
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/Login" element={<Login />} />
-          <Route path="/Registro" element={<Registro />} />
-          <Route path="*" element={<Layout />} />
-        </Routes>
-      </BrowserRouter>
-      <ToastContainer/>
+      <ThemeProvider theme={theme}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/Login" element={<Login />} />
+            <Route path="/Registro" element={<Registro />} />
+            <Route path="*" element={<Layout />} />
+          </Routes>
+        </BrowserRouter>
+        <ToastContainer />
+      </ThemeProvider>
     </>
   );
 };

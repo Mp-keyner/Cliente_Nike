@@ -36,10 +36,10 @@ body {
 }
 .zapato{
   width: 80%;
-  transform: rotate(-35deg);
+  -webkit-user-drag: none;
+  animation: shoe 2.3s infinite linear;
 }
 .Baner{
-
   height: 27pc;
   padding: 0.6pc;
   display: flex;
@@ -76,8 +76,49 @@ body {
   align-items: center;
   justify-content: center;
 }
-input{
+/* input{
   padding: 0.3pc;
   border: rgba(70,118,161,1);
   background-color: transparent;
+} */
+
+.bl {
+  color: white;
 }
+.FlotaAnimate {
+  position: relative; /* Añade esta línea */
+  animation: move 2.3s infinite linear;
+  position: absolute;
+ }
+ 
+ @keyframes move {
+  0% {
+    transform: translatey(0);
+  }
+  50% {
+    transform: translatey(1pc); 
+  }
+  100% {
+    transform: translatey(0);
+  }
+ 
+ }
+
+ @keyframes shoe {
+  0% {
+    transform: translatey(0) rotate(-30deg);
+  }
+  50% {
+    transform: translatey(0.4pc) rotate(-32deg); 
+  }
+  100% {
+    transform: translatey(0) rotate(-30deg);
+  }
+ 
+ }
+/*  
+@media screen and (max-width:400px) {
+  .zapato{
+    width: 100%;
+  }
+} */
