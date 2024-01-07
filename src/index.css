@@ -116,6 +116,11 @@ body {
   }
  
  }
+.register {
+  background: linear-gradient(184deg, #939071 0%, #72C3A9 35%, #517F69 57%, #939071 100%);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 /*  
 @media screen and (max-width:400px) {
   .zapato{

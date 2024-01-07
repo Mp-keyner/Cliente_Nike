@@ -20,7 +20,7 @@ const App = () => {
             <Route path="*" element={<Layout />} />
           </Routes>
         </BrowserRouter>
-        <ToastContainer />
+        <ToastContainer theme="dark" />
       </ThemeProvider>
     </>
   );

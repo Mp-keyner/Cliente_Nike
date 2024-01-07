@@ -28,7 +28,7 @@ const Login = () => {
   const translate = useTransform(scrollYProgress, [0, 1], [0, -100]);
   return (
     <>
-      <Stack component="section">
+      <Stack component="section" >
         <Stack
           component="section"
           alignItems="center"
@@ -131,7 +131,8 @@ const Login = () => {
           component="section"
           direction={{ sm: "row", xs: "column" }}
           padding={{ sm: 0, xs: "1pc" }}
-          height="80vh"
+          height="95vh"
+          gap={3}
         >
           <Box
             width={{ sm: "50%", xs: "100%" }}
@@ -141,6 +142,19 @@ const Login = () => {
             justifyContent="center"
             gap={3}
           >
+            <i>
+              <Typography
+                variant="h2"
+                fontSize="2.2pc"
+                fontWeight={900}
+                color="white"
+                sx={{
+                  fontFamily: "Barlow",
+                }}
+              >
+                INICIAR SESION
+              </Typography>
+            </i>
             <TextField
               color="light"
               variant="outlined"
@@ -222,15 +236,30 @@ const Login = () => {
             >
               iniciar sesion
             </Button>
+            <p  style={{color:'#fff'}}>Registrate <a href="/Registro">Aki</a></p>
           </Box>
           <Box
             width={{ sm: "50%", xs: "100%" }}
-            height="100%"
             display="flex"
+            flexDirection='column'
             alignItems="center"
             justifyContent="center"
             position="relative"
+            height='90%'
           >
+             <i>
+              <Typography
+                variant="h2"
+                fontSize="2.2pc"
+                fontWeight={900}
+                color="white"
+                sx={{
+                  fontFamily: "Barlow",
+                }}
+              >
+                MARCAS ALIADAS
+              </Typography>
+            </i>
             <ShoesAnimated />
           </Box>
         </Stack>
