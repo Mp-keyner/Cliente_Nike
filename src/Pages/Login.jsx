@@ -25,8 +25,6 @@ const Login = () => {
   const [btn, setBtn] = useState(false);
   const { scrollYProgress } = useScroll();
   const handleClickShowPassword = () => setShowPassword((show) => !show);
-  const rotate = useTransform(scrollYProgress, [0, 1], [20, 0]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1.05, 1]);
   const translate = useTransform(scrollYProgress, [0, 1], [0, -100]);
   return (
     <>
@@ -47,7 +45,10 @@ const Login = () => {
             flexDirection="column"
           >
             <Typography
-              fontSize="5pc"
+              fontSize={{
+                sm: "5pc",
+                xs: "4pc"
+              }}
               fontWeight={900}
               sx={{
                 fontFamily: "Barlow",
@@ -65,16 +66,6 @@ const Login = () => {
               entrenamientos exigentes sin sacrificar el estilo mientras cambias
               de serie o estación.
             </Typography>
-            <motion.div
-              style={{
-                rotate,
-                scale,
-                x: translate,
-              }}
-            >
-              {/* contenido del componente */}
-              k
-            </motion.div>
           </Box>
           <Box
             component="div"
@@ -116,19 +107,25 @@ const Login = () => {
           alignItems="flex-end"
           justifyContent="center"
         >
-          <i>
-            <Typography
-              variant="h2"
-              fontSize={{ sm: "7pc", xs: "2.2pc" }}
-              fontWeight={900}
-              color="white"
-              sx={{
-                fontFamily: "Barlow",
-              }}
-            >
-              REGALA INSPIRACION
-            </Typography>
-          </i>
+          <motion.div
+            style={{
+              y: translate,
+            }}
+          >
+            <i>
+              <Typography
+                variant="h2"
+                fontSize={{ sm: "7pc", xs: "2.2pc" }}
+                fontWeight={900}
+                color="white"
+                sx={{
+                  fontFamily: "Barlow",
+                }}
+              >
+                REGALA INSPIRACION
+              </Typography>
+            </i>
+          </motion.div>
         </Box>
         <Stack
           component="section"
@@ -154,11 +151,11 @@ const Login = () => {
               }
               value={email}
               sx={{
-                sx: {
-                  width: "20%",
-                },
                 color: "#fff",
-                width: "70%",
+                width: {
+                  sm: "70%",
+                  xs: "100%"
+                },
                 border: "1px solid white",
                 borderRadius: 1,
                 "& .MuiInputBase-input": {
@@ -183,7 +180,10 @@ const Login = () => {
               name="password"
               sx={{
                 color: "#fff",
-                width: "70%",
+                width: {
+                  sm: "70%",
+                  xs: "100%"
+                },
                 border: "1px solid white",
               }}
               onChange={({ target: { value, name } }) =>
@@ -209,12 +209,16 @@ const Login = () => {
             />
             <Button
               sx={{
-                width: "70%",
+                width: {
+                  sm: "70%",
+                  xs: "100%"
+                },
               }}
               color="light"
               onMouseOver={() => setBtn(true)}
               onMouseOut={() => setBtn(false)}
               variant={btn ? "contained" : "outlined"}
+              onClick={() => handleLogin()}
             >
               iniciar sesion
             </Button>
