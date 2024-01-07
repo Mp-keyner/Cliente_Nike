@@ -3,7 +3,7 @@ import { userLogin } from "../hook/Auth/useLogin";
 import axios from "axios";
 import { useApi } from "../hook/utils/useApi";
 import zapato from "../assets/img/zapato.png";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import {
   Box,
   Button,
@@ -23,9 +23,11 @@ const Login = () => {
   const { errorApi } = useApi();
   const [showPassword, setShowPassword] = React.useState(false);
   const [btn, setBtn] = useState(false);
-
+  const { scrollYProgress } = useScroll();
   const handleClickShowPassword = () => setShowPassword((show) => !show);
-
+  const rotate = useTransform(scrollYProgress, [0, 1], [20, 0]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1.05, 1]);
+  const translate = useTransform(scrollYProgress, [0, 1], [0, -100]);
   return (
     <>
       <Stack component="section">
@@ -63,6 +65,16 @@ const Login = () => {
               entrenamientos exigentes sin sacrificar el estilo mientras cambias
               de serie o estación.
             </Typography>
+            <motion.div
+              style={{
+                rotate,
+                scale,
+                x: translate,
+              }}
+            >
+              {/* contenido del componente */}
+              k
+            </motion.div>
           </Box>
           <Box
             component="div"
@@ -208,8 +220,8 @@ const Login = () => {
             </Button>
           </Box>
           <Box
-             width={{ sm: "50%", xs: "100%" }}
-             height='100%'
+            width={{ sm: "50%", xs: "100%" }}
+            height="100%"
             display="flex"
             alignItems="center"
             justifyContent="center"
